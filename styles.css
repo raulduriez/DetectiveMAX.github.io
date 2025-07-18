@@ -1,4 +1,4 @@
-/* 🧩 Estilo base */
+/* 🎨 Estilo base y fuente principal */
 body {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
   color: #222;
 }
 
-/* 🧠 Estructura vertical: Fila 1 (superior) y Fila 2 (inferior) */
+/* 🧠 Estructura de filas: vertical */
 .estructura-juego {
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ body {
   box-sizing: border-box;
 }
 
-/* 🔳 Fila 1: panel de entrada, mapa o controles */
+/* 🧩 Zona superior: panel de registro o mapa */
 .zona-superior {
   width: 100%;
   max-width: 700px;
@@ -26,7 +26,7 @@ body {
   padding-bottom: 20px;
 }
 
-/* 📜 Fila 2: narrativa, pistas, respuestas */
+/* 📜 Zona inferior: narrativa, resultados y pistas */
 .zona-inferior {
   width: 100%;
   max-width: 700px;
@@ -34,7 +34,7 @@ body {
   padding-bottom: 20px;
 }
 
-/* 🎮 Botones */
+/* 🎮 Botones funcionales */
 button {
   display: block;
   width: 100%;
@@ -53,7 +53,7 @@ button:hover {
   background-color: #004c99;
 }
 
-/* 📋 Campos de entrada */
+/* 📝 Campos de entrada */
 input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -63,14 +63,14 @@ input[type="text"] {
   border-radius: 6px;
 }
 
-/* 📁 Rangos */
+/* 📁 Lista de rangos */
 .lista-rangos {
   margin-top: 10px;
   padding-left: 20px;
   font-size: 16px;
 }
 
-/* 🧠 Panel narrativo con texto mecanografiado */
+/* 🧠 Panel narrativo y pistas */
 .texto-maquina,
 .contenedor-pistas {
   background: #f9f9f9;
@@ -84,14 +84,25 @@ input[type="text"] {
   overflow-wrap: anywhere;
 }
 
-/* 🤖 Chambot - imagen en mapa */
+/* 🤖 Imagen del Chambot */
 .imagen-robot {
   width: 80px;
   margin-bottom: 8px;
   border-radius: 50%;
 }
 
-/* 📱 Responsividad general */
+/* 🗺️ Pie de mapa en mapa.html */
+.pie-mapa {
+  padding: 12px;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+}
+
+/* 📱 Ajustes para pantallas grandes */
 @media screen and (min-width: 768px) {
   body {
     font-size: 18px;
@@ -102,6 +113,7 @@ input[type="text"] {
     padding-right: 24px;
   }
 }
+
 
 
 
