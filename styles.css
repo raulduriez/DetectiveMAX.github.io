@@ -1,4 +1,4 @@
-/* 🎨 Estilo base y fuente principal */
+/* 🌐 Estilos base */
 body {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
   color: #222;
 }
 
-/* 🧠 Estructura de filas: vertical */
+/* 🧩 Contenedor principal vertical */
 .estructura-juego {
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ body {
   box-sizing: border-box;
 }
 
-/* 🧩 Zona superior: panel de registro o mapa */
+/* 🧠 Fila superior: registro del jugador */
 .zona-superior {
   width: 100%;
   max-width: 700px;
@@ -26,7 +26,7 @@ body {
   padding-bottom: 20px;
 }
 
-/* 📜 Zona inferior: narrativa, resultados y pistas */
+/* 📜 Fila inferior: narrativa del Chambot */
 .zona-inferior {
   width: 100%;
   max-width: 700px;
@@ -53,7 +53,7 @@ button:hover {
   background-color: #004c99;
 }
 
-/* 📝 Campos de entrada */
+/* 📝 Campo de alias */
 input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -63,46 +63,26 @@ input[type="text"] {
   border-radius: 6px;
 }
 
-/* 📁 Lista de rangos */
-.lista-rangos {
-  margin-top: 10px;
-  padding-left: 20px;
-  font-size: 16px;
-}
-
-/* 🧠 Panel narrativo y pistas */
-.texto-maquina,
-.contenedor-pistas {
-  background: #f9f9f9;
+/* 🧠 Panel narrativo del Chambot */
+.texto-maquina {
+  background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 12px;
   margin-top: 12px;
   font-size: 17px;
   white-space: pre-wrap;
-  word-wrap: break-word;
   overflow-wrap: anywhere;
 }
 
-/* 🤖 Imagen del Chambot */
-.imagen-robot {
-  width: 80px;
-  margin-bottom: 8px;
-  border-radius: 50%;
-}
-
-/* 🗺️ Pie de mapa en mapa.html */
-.pie-mapa {
-  padding: 12px;
-  background-color: #eee;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px;
+/* 📊 Lista de rangos del juego */
+.lista-rangos {
+  margin-top: 10px;
+  padding-left: 20px;
   font-size: 16px;
 }
 
-/* 📱 Ajustes para pantallas grandes */
+/* 📱 Responsividad para pantallas grandes */
 @media screen and (min-width: 768px) {
   body {
     font-size: 18px;
