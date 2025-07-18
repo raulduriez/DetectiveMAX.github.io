@@ -1,50 +1,85 @@
-.pantalla-doble {
-  display: flex;
-  height: 100vh;
+body {
+  margin: 0;
+  padding: 0;
   font-family: 'Courier New', monospace;
 }
 
+.pantalla-doble {
+  display: flex;
+  flex-direction: column; /* Por defecto para móviles */
+  min-height: 100vh;
+}
+
 .lado-izquierdo, .lado-derecho {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .lado-izquierdo {
-  background: #f4f4f4;
-  border-right: 1px solid #ccc;
+  background-color: #f4f4f4;
 }
 
 .lado-derecho {
-  background: #ffffff;
-}
-
-.lista-rangos {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-.boton-jugar {
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 18px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.boton-jugar:hover {
-  background-color: #004c99;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
 }
 
 .texto-maquina {
   white-space: pre-wrap;
+  word-wrap: break-word;
   font-size: 16px;
-  line-height: 1.4;
-  padding: 10px;
+  line-height: 1.5;
+  padding: 12px;
   border: 1px solid #ddd;
+  border-radius: 6px;
   background: #fafafa;
+}
+
+/* Botón responsive */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 18px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
   border-radius: 6px;
 }
+
+button:hover {
+  background-color: #004c99;
+}
+
+/* Rango y lista */
+.lista-rangos {
+  margin: 10px 0;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+/* Alias y campo de entrada */
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* 🌐 Cuando sea escritorio */
+@media screen and (min-width: 768px) {
+  .pantalla-doble {
+    flex-direction: row;
+  }
+
+  .lado-izquierdo, .lado-derecho {
+    flex: 1;
+  }
+
+  .lado-derecho {
+    border-left: 1px solid #ccc;
+    border-top: none;
+  }
+}
+
