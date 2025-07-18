@@ -27,7 +27,6 @@ function actualizarRango() {
   document.getElementById("rangoJugador").textContent = rango;
 }
 
-// 🪪 Mensaje animado estilo credencial de entrada
 function mostrarCredencialDetective() {
   const panel = document.getElementById("mensajeMaquina");
   const aliasVisible = aliasJugador || "Detective sin registro";
@@ -41,7 +40,6 @@ function mostrarCredencialDetective() {
   escribirMaquina(mensaje, "mensajeMaquina", 40);
 }
 
-// 🎮 Al presionar "JUGAR"
 function iniciarJuego() {
   aliasJugador = document.getElementById("alias").value.trim() || "Sin alias";
   localStorage.setItem("aliasDetective", aliasJugador);
@@ -62,7 +60,6 @@ Presiona el botón para iniciar tu expedición.`;
   escribirMaquina(mensaje, "mensajeMaquina", 35, mostrarBotonContinuar);
 }
 
-// ✍️ Máquina de escribir con callback opcional
 function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
   let i = 0;
   const destino = document.getElementById(idElemento);
@@ -77,7 +74,6 @@ function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
   }, velocidad);
 }
 
-// 🚀 Botón que aparece después del mensaje
 function mostrarBotonContinuar() {
   const btn = document.createElement("button");
   btn.textContent = "🚀 Continuar misión";
