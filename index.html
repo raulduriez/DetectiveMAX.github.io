@@ -5,11 +5,11 @@
   <title>Las Mil Piezas Perdidas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- PWA manifest e icono -->
+  <!-- PWA Manifesto e Icono -->
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon.png" />
 
-  <!-- Firebase (solo si usas métricas) -->
+  <!-- Firebase (solo si lo usas) -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <script>
@@ -26,17 +26,14 @@
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
-
-
   </script>
 
-  <!-- Service Worker -->
+  <!-- Service Worker (para instalar como app) -->
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log("✅ SW activo"))
-        .catch(err => console.error("❌ Error SW", err));
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker activo"))
+        .catch(err => console.error("❌ Error con Service Worker:", err));
     }
   </script>
 
@@ -47,7 +44,7 @@ const analytics = getAnalytics(app);
 
   <div class="estructura-juego">
 
-    <!-- 🧩 Fila 1: Registro y panel del jugador -->
+    <!-- 🧩 Fila 1: Registro del detective -->
     <div class="zona-superior">
       <h2>🕵️ Registro del detective</h2>
 
@@ -82,7 +79,7 @@ const analytics = getAnalytics(app);
 
   </div>
 
-  <!-- Script de narrativa y lógica -->
+  <!-- Script de narrativa y lógica detectivesca -->
   <script src="intro.js"></script>
 </body>
 </html>
