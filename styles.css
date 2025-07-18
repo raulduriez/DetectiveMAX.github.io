@@ -102,3 +102,32 @@ input[type="text"] {
   }
 }
 
+.pantalla-vertical {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.zona-superior,
+.zona-inferior {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 16px;
+}
+
+.texto-maquina {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+
