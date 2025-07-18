@@ -5,42 +5,36 @@
   <title>Las Mil Piezas Perdidas - Mapa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Estilos -->
+  <!-- Estilos visuales -->
   <link rel="stylesheet" href="mapa.css" />
 
-  <!-- Leaflet para el mapa -->
+  <!-- Leaflet (Mapa interactivo) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-  <!-- Firebase (si usas métricas) -->
+  <!-- Firebase opcional para métricas -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <script>
-   const firebaseConfig = {
-  apiKey: "AIzaSyBbODoyyAkSw4AuIPZp9TMlZ-eVLbWkSeE",
-  authDomain: "inspectormag-a88bd.firebaseapp.com",
-  projectId: "inspectormag-a88bd",
-  storageBucket: "inspectormag-a88bd.firebasestorage.app",
-  messagingSenderId: "103921614758",
-  appId: "1:103921614758:web:557b62263304f1cfc29967",
-  measurementId: "G-YG0N4CMEET"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
-
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      appId: "TU_APP_ID",
+      measurementId: "TU_MEASUREMENT_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics().logEvent("ingreso_mapa");
   </script>
 </head>
 <body>
 
   <div class="estructura-juego">
 
-    <!-- 🧭 Fila 1: Mapa + controles + chambot intro -->
+    <!-- 🧭 Fila 1: Panel de misión y controles -->
     <div class="zona-superior">
 
+      <!-- 🤖 Chambot da bienvenida e inicia misión -->
       <div id="chatBotMision" class="contenedor-chatbot">
         <img src="chambot.png" class="imagen-robot" alt="Chambot" />
         <div>
@@ -51,18 +45,20 @@ const analytics = getAnalytics(app);
         </div>
       </div>
 
+      <!-- 🎮 Botones de mapa -->
       <div id="panelBotones" style="display:none">
         <button onclick="activarViaje()">🚀 Viajar</button>
         <button onclick="mostrarCriminales()">📁 Criminales</button>
       </div>
 
+      <!-- 🗺️ Mapa de investigación -->
       <div id="map"></div>
 
+      <!-- 📡 Pie de mapa con estado actual -->
       <div class="pie-mapa">
         <div id="resumenJugador">🧠 Misión en curso...</div>
-        <div id="reporteNarrativo">📍 Ubicación</div>
+        <div id="reporteNarrativo">📍 Ubicación pendiente</div>
       </div>
-
     </div>
 
     <!-- 📜 Fila 2: Narrativa e intervención -->
@@ -74,7 +70,7 @@ const analytics = getAnalytics(app);
 
   </div>
 
-  <!-- Lógica completa del juego -->
+  <!-- Lógica completa del mapa -->
   <script src="mapa.js"></script>
 </body>
 </html>
