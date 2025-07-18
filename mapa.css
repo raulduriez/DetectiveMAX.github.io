@@ -1,9 +1,12 @@
+/* 🧭 Estructura principal */
 .contenedor-principal {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  font-family: 'Courier New', monospace;
+  font-family: system-ui, 'Courier New', monospace;
 }
 
+/* 🗺️ Zona central del mapa */
 .zona-mapa {
   flex: 1;
   display: flex;
@@ -15,75 +18,71 @@
   width: 100%;
 }
 
+/* 📍 Pie de mapa */
 .pie-mapa {
   padding: 8px;
   background: #eee;
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+/* 🧠 Panel derecho con pistas e info */
 .panel-derecho {
-  width: 320px;
+  width: 100%;
   padding: 16px;
   background: #ffffff;
   overflow-y: auto;
-  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
+/* 📱 Botones de interacción */
 button {
   margin: 6px 0;
-  padding: 8px;
+  padding: 12px;
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   border: none;
   background-color: #0066cc;
   color: white;
   border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
   background-color: #004c99;
 }
 
-.info-panel {
-  margin-top: 10px;
+/* 🎭 Panel de pistas e intervenciones */
+.contenedor-pistas,
+.contenedor-chatbot,
+.contenedor-turistico {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.pista-item {
+  margin-bottom: 10px;
   font-size: 15px;
   white-space: pre-wrap;
 }
 
-.contenedor-chatbot {
-  background: #f4f4f4;
-  padding: 12px;
-  border-radius: 6px;
-  text-align: center;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-
+/* 🤖 Imagen del Chambot */
 .imagen-robot {
   width: 80px;
   margin-bottom: 12px;
 }
 
-.contenedor-pistas {
-  background: #f0f0f0;
-  padding: 10px;
-  border-radius: 6px;
-}
-
-.pista-item {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.contenedor-turistico {
-  background: #f4f4f4;
-  padding: 12px;
-  border-radius: 6px;
+/* 📜 Panel informativo */
+.info-panel {
   margin-top: 10px;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  white-space: pre-wrap;
 }
 
 .info-panel img {
@@ -96,3 +95,21 @@ button:hover {
   color: #0066cc;
   text-decoration: underline;
 }
+
+/* 🧩 Ajustes para pantallas grandes */
+@media screen and (min-width: 768px) {
+  .contenedor-principal {
+    flex-direction: row;
+  }
+
+  .zona-mapa {
+    flex: 3;
+  }
+
+  .panel-derecho {
+    width: 320px;
+    border-top: none;
+    border-left: 1px solid #ccc;
+  }
+}
+
