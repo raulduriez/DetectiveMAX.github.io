@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Las Mil Piezas Perdidas — Mapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="mapa.css" />
+</head>
+<body>
+  <div class="contenedor-principal">
+    <div class="zona-mapa">
+      <div id="map"></div>
+      <div class="pie-mapa">
+        <div id="reporteNarrativo">📍 Esperando ubicación...</div>
+        <div id="resumenJugador">🧠 Misión activa | Tiempo restante: 72h 0min</div>
+      </div>
+    </div>
+
+    <div class="panel-derecho">
+      <h2>🎛️ Centro de Operaciones</h2>
+
+      <div id="chatBotMision" class="contenedor-chatbot">
+        <img src="https://i.imgur.com/YJxHyDF.png" alt="Chambot" class="imagen-robot" />
+        <h3>🚨 Informe de Inteligencia</h3>
+        <p><strong>Objeto robado:</strong> Manuscrito original de la “Carta de los Vientos”.</p>
+        <p><strong>Misión:</strong> Recuperarlo antes de 72 horas ficticias (4320 minutos).</p>
+        <p>¿Aceptas encargarte del caso?</p>
+        <button onclick="aceptarMision()">✅ Aceptar misión</button>
+        <button onclick="rechazarMision()">❌ Rechazar</button>
+      </div>
+
+      <div id="panelBotones" style="display:none;">
+        <button onclick="mostrarPista()">🕵️ Ver pista</button>
+        <button onclick="activarViaje()">🧭 Viajar</button>
+        <button onclick="mostrarCriminales()">📁 Criminales</button>
+      </div>
+
+      <div id="mensajePanel" class="info-panel"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="mapa.js"></script>
+</body>
+</html>

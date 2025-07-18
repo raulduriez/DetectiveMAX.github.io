@@ -1,0 +1,50 @@
+.pantalla-doble {
+  display: flex;
+  height: 100vh;
+  font-family: 'Courier New', monospace;
+}
+
+.lado-izquierdo, .lado-derecho {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.lado-izquierdo {
+  background: #f4f4f4;
+  border-right: 1px solid #ccc;
+}
+
+.lado-derecho {
+  background: #ffffff;
+}
+
+.lista-rangos {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.boton-jugar {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.boton-jugar:hover {
+  background-color: #004c99;
+}
+
+.texto-maquina {
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  border-radius: 6px;
+}

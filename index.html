@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Las Mil Piezas Perdidas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.png" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      appId: "TU_APP_ID",
+      measurementId: "TU_MEASUREMENT_ID"
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    analytics.logEvent('inicio_juego');
+  </script>
+
+  <!-- Activar Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(() => {
+        console.log("✅ Service Worker registrado.");
+      });
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="pantalla-doble">
+    <div class="lado-izquierdo">
+      <h2>🕵️ Registro del detective</h2>
+      <label for="alias">Alias o nombre:</label>
+      <input type="text" id="alias" placeholder="Ej. Duriez" />
+      <button onclick="guardarRegistro()">Guardar datos</button>
+
+      <h3>🎖️ Tu rango actual:</h3>
+      <div id="rangoJugador">🧩 Cargando...</div>
+
+      <h3>📈 Rangos del juego:</h3>
+      <ul class="lista-rangos">
+        <li>Novato: 1–3 casos</li>
+        <li>Inspector: 4–6 casos</li>
+        <li>Detective: 7–9 casos</li>
+        <li>Subcomandante: 10–12 casos</li>
+        <li>Comandante: 13–15 casos</li>
+        <li>Comandante General: 16+ casos</li>
+      </ul>
+
+      <button onclick="iniciarJuego()" class="boton-jugar">🎮 JUGAR</button>
+    </div>
+
+    <div class="lado-derecho">
+      <h2>🧠 Centro de Inteligencia</h2>
+      <div id="mensajeMaquina" class="texto-maquina"></div>
+    </div>
+  </div>
+
+  <script src="intro.js"></script>
+</body>
+</html>
