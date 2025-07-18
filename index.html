@@ -25,50 +25,15 @@
     analytics.logEvent('inicio_juego');
   </script>
 
-  <!-- Activar Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').then(() => {
-        console.log("✅ Service Worker registrado.");
-      });
-    }
-  </script>
-
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="pantalla-vertical">
-  <!-- 🧩 Fila 1: Registro y juego -->
+  <div class="estructura-juego">
+  <!-- 🧩 Fila 1: entrada, mapa o controles -->
   <div class="zona-superior">
-    <h2>🕵️ Registro del detective</h2>
-    <label for="alias">Alias o nombre:</label>
-    <input type="text" id="alias" placeholder="Ej. Duriez" />
-    <button onclick="guardarRegistro()">Guardar datos</button>
-
-    <h3>🎖️ Tu rango actual:</h3>
-    <div id="rangoJugador">🧩 Cargando...</div>
-
-    <h3>📈 Rangos del juego:</h3>
-    <ul class="lista-rangos">
-      <li>Novato: 1–3 casos</li>
-      <li>Inspector: 4–6 casos</li>
-      <li>Detective: 7–9 casos</li>
-      <li>Subcomandante: 10–12 casos</li>
-      <li>Comandante: 13–15 casos</li>
-      <li>Comandante General: 16+ casos</li>
-    </ul>
-
-    <button onclick="iniciarJuego()" class="boton-jugar">🎮 JUGAR</button>
+    <!-- contenido original de la columna izquierda -->
   </div>
 
-  <!-- 🤖 Fila 2: Narrativa del Chambot -->
+  <!-- 📜 Fila 2: narrativa, textos, feedback -->
   <div class="zona-inferior">
-    <h2>🧠 Centro de Inteligencia</h2>
-    <div id="mensajeMaquina" class="texto-maquina"></div>
+    <!-- contenido original de la columna derecha -->
   </div>
 </div>
 
-
-  <script src="intro.js"></script>
-</body>
-</html>
