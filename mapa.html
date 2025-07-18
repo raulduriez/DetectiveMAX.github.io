@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-  <!-- Firebase opcional para métricas -->
+  <!-- Firebase opcional -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <script>
@@ -31,37 +31,36 @@
 
   <div class="estructura-juego">
 
-    <!-- 🧭 Fila 1: Panel de misión y controles -->
+    <!-- 🧠 Chambot inicia la misión -->
     <div class="zona-superior">
-
-      <!-- 🤖 Chambot da bienvenida e inicia misión -->
       <div id="chatBotMision" class="contenedor-chatbot">
         <img src="chambot.png" class="imagen-robot" alt="Chambot" />
         <div>
           <h3>🤖 Chambot: Informe secreto</h3>
-          <p>Se ha detectado una transacción ilegal de patrimonio oculto. ¿Desea activar la misión y buscar el objeto perdido?</p>
+          <p>Se ha detectado una transacción ilegal de patrimonio oculto. ¿Activar la misión y rastrear el objeto?</p>
           <button onclick="aceptarMision()">✅ Aceptar</button>
           <button onclick="rechazarMision()">❌ Rechazar</button>
         </div>
       </div>
 
-     <div id="panelBotones" style="display:none">
-  <button onclick="mostrarPistas()">🧩 Pistas</button>
-  <button onclick="activarViaje()">🚀 Viajar</button>
-  <button onclick="mostrarCriminales()">📁 Carpeta criminales</button>
-</div>
+      <!-- 🎮 Panel de botones -->
+      <div id="panelBotones" style="display:none">
+        <button onclick="mostrarPistas()">🧩 Pistas</button>
+        <button onclick="mostrarViaje()">🚀 Viajar</button>
+        <button onclick="mostrarCriminales()">📁 Carpeta criminales</button>
+      </div>
 
       <!-- 🗺️ Mapa de investigación -->
       <div id="map"></div>
 
-      <!-- 📡 Pie de mapa con estado actual -->
+      <!-- 📡 Pie del mapa -->
       <div class="pie-mapa">
-        <div id="resumenJugador">🧠 Misión en curso...</div>
-        <div id="reporteNarrativo">📍 Ubicación pendiente</div>
+        <div id="resumenJugador">🧠 Misión pendiente</div>
+        <div id="reporteNarrativo">📍 Ubicación sin asignar</div>
       </div>
     </div>
 
-    <!-- 📜 Fila 2: Narrativa e intervención -->
+    <!-- 📜 Zona de pistas e información narrativa -->
     <div class="zona-inferior">
       <div id="mensajePanel" class="contenedor-pistas">
         🧩 Esperando instrucciones del Chambot...
@@ -70,15 +69,14 @@
 
   </div>
 
-  <!-- Lógica completa del mapa -->
-  <script src="mapa.js"></script>
+  <!-- 🧩 Módulos JavaScript por separado -->
   <script src="core.js"></script>
-<script src="narrativa.js"></script>
-<script src="viaje.js"></script>
-<script src="intervencion.js"></script>
-<script src="panel.js"></script>
-
+  <script src="narrativa.js"></script>
+  <script src="viaje.js"></script>
+  <script src="intervencion.js"></script>
+  <script src="panel.js"></script>
 </body>
 </html>
+
 
 
