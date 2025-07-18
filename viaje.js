@@ -61,3 +61,9 @@ function mostrarInfoTuristica(depto) {
   document.getElementById("mensajePanel").innerHTML +=
     `<div class='contenedor-pistas'>${datos[depto] || ""}</div>`;
 }
+
+function viajarA(destino) {
+  console.log("🧭 Viajando a:", destino);
+  ...
+}
+
