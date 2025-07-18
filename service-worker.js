@@ -9,35 +9,34 @@ const ARCHIVOS_A_CACHEAR = [
   "mapa.js",
   "manifest.json",
   "icon.png",
+  "chambot.png",
   "https://unpkg.com/leaflet@1.9.3/dist/leaflet.css",
   "https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
 ];
 
-// ⚙️ Instalación inicial: guarda archivos
+// 🛠️ Instalación: guarda archivos en caché
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(ARCHIVOS_A_CACHEAR);
     })
   );
-  console.log("🛠️ Service Worker instalado");
+  console.log("🧩 Service Worker instalado y archivos cacheados");
 });
 
-// 🚀 Activación: limpia versiones viejas si las hay
+// 🚦 Activación: limpia versiones antiguas si las hay
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => {
+    caches.keys().then(claves => {
       return Promise.all(
-        keys
-          .filter(k => k !== CACHE_NAME)
-          .map(k => caches.delete(k))
+        claves.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       );
     })
   );
-  console.log("🚦 Service Worker activo y listo");
+  console.log("🧠 Service Worker activo y actualizado");
 });
 
-// 🌀 Intercepta solicitudes: responde desde caché si puede
+// 🔄 Intercepción: responde desde caché si existe, si no, usa red
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(respuesta => {
@@ -45,5 +44,6 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
 
 
