@@ -7,6 +7,8 @@ window.onload = () => {
   document.getElementById("mensajePanel").textContent = "🧠 Esperando instrucciones del Chambot...";
 };
 
+
+
 function iniciarMapa() {
   mapa = L.map("map").setView([12.8654, -85.2072], 7);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapa);
@@ -138,6 +140,17 @@ function mostrarPistas() {
       <p>👣 Rastree los puntos marcados para confirmar presencia del sospechoso.</p>
     </div>`;
 }
+
+let pistaActual = 1;
+
+function mostrarPistas() {
+  if (pistaActual === 1) {
+    // primera pista en León
+  } else if (pistaActual === 2) {
+    // segunda pista en Masaya
+  }
+}
+
 
 
 
