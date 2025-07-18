@@ -1,14 +1,21 @@
 {
   "name": "Las Mil Piezas Perdidas",
   "short_name": "Detective",
+  "description": "Juego investigativo donde el jugador rastrea pistas culturales, criminales y decisiones que definen su legado.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0066cc",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
