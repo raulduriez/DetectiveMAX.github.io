@@ -1,40 +1,40 @@
-/* ✨ Estilo base */
+/* 🧩 Estilo base */
 body {
   margin: 0;
   padding: 0;
   font-family: system-ui, 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 1.6;
   background-color: #ffffff;
-  font-size: 17px;
-  line-height: 1.5;
+  color: #222;
 }
 
-/* 📦 Layout principal: en móvil es vertical */
-.pantalla-doble {
+/* 🧠 Estructura vertical: Fila 1 (superior) y Fila 2 (inferior) */
+.estructura-juego {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* 🧱 Paneles izquierdo y derecho */
-.lado-izquierdo,
-.lado-derecho {
   padding: 16px;
   box-sizing: border-box;
+}
+
+/* 🔳 Fila 1: panel de entrada, mapa o controles */
+.zona-superior {
+  width: 100%;
   max-width: 700px;
   margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+/* 📜 Fila 2: narrativa, pistas, respuestas */
+.zona-inferior {
   width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 
-.lado-izquierdo {
-  background-color: #f4f4f4;
-}
-
-.lado-derecho {
-  background-color: #ffffff;
-  border-top: 1px solid #ccc;
-}
-
-/* 🎮 Botones generales */
+/* 🎮 Botones */
 button {
   display: block;
   width: 100%;
@@ -53,81 +53,55 @@ button:hover {
   background-color: #004c99;
 }
 
-/* 🧠 Texto narrativo con efecto máquina de escribir */
-.texto-maquina {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-  font-size: 17px;
-  line-height: 1.5;
-  padding: 12px;
-  border: 1px solid #ddd;
-  background: #fafafa;
-  border-radius: 6px;
-}
-
-/* 🧩 Lista de rangos */
-.lista-rangos {
-  margin-top: 10px;
-  padding-left: 20px;
-  font-size: 15px;
-}
-
-/* 📇 Campos de entrada */
+/* 📋 Campos de entrada */
 input[type="text"] {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 17px;
+  margin-top: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* 📱 Responsividad para pantallas grandes */
-@media screen and (min-width: 768px) {
-  .pantalla-doble {
-    flex-direction: row;
-  }
-
-  .lado-izquierdo,
-  .lado-derecho {
-    flex: 1;
-    max-width: none;
-    margin: 0;
-  }
-
-  .lado-derecho {
-    border-left: 1px solid #ccc;
-    border-top: none;
-  }
+/* 📁 Rangos */
+.lista-rangos {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 16px;
 }
 
-.pantalla-vertical {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 16px;
-  box-sizing: border-box;
-}
-
-.zona-superior,
-.zona-inferior {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 16px;
-}
-
-.texto-maquina {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-  background: #fafafa;
+/* 🧠 Panel narrativo con texto mecanografiado */
+.texto-maquina,
+.contenedor-pistas {
+  background: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 12px;
+  margin-top: 12px;
   font-size: 17px;
-  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
+
+/* 🤖 Chambot - imagen en mapa */
+.imagen-robot {
+  width: 80px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+}
+
+/* 📱 Responsividad general */
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+  .zona-superior,
+  .zona-inferior {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 
 
