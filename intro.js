@@ -1,18 +1,21 @@
 let aliasJugador = "";
 let casosResueltos = parseInt(localStorage.getItem("casosResueltos")) || 0;
 
+// ✅ Se ejecuta al cargar la página
 window.onload = () => {
   aliasJugador = localStorage.getItem("aliasDetective") || "";
   actualizarRango();
   mostrarCredencialDetective();
 };
 
+// ✅ Guarda el alias ingresado por el jugador
 function guardarRegistro() {
   aliasJugador = document.getElementById("alias").value.trim() || "Sin alias";
   localStorage.setItem("aliasDetective", aliasJugador);
   actualizarRango();
 }
 
+// ✅ Determina el rango según número de casos resueltos
 function obtenerRango(casos) {
   if (casos <= 3) return "🎖️ Novato";
   else if (casos <= 6) return "🔎 Inspector";
@@ -22,13 +25,14 @@ function obtenerRango(casos) {
   else return "🌟 Comandante General";
 }
 
+// ✅ Actualiza el panel de rango actual
 function actualizarRango() {
   const rango = obtenerRango(casosResueltos);
   document.getElementById("rangoJugador").textContent = rango;
 }
 
+// ✅ Muestra una animación estilo credencial detectivesca
 function mostrarCredencialDetective() {
-  const panel = document.getElementById("mensajeMaquina");
   const aliasVisible = aliasJugador || "Detective sin registro";
   const rangoActual = obtenerRango(casosResueltos);
   const mensaje = `
@@ -36,10 +40,10 @@ function mostrarCredencialDetective() {
 🔓 Perfil reconocido: ${aliasVisible}
 🧠 Rango actual: ${rangoActual}
 📡 Accediendo al centro de inteligencia...`;
-
   escribirMaquina(mensaje, "mensajeMaquina", 40);
 }
 
+// ✅ Inicia la narrativa y prepara transición hacia mapa.html
 function iniciarJuego() {
   aliasJugador = document.getElementById("alias").value.trim() || "Sin alias";
   localStorage.setItem("aliasDetective", aliasJugador);
@@ -60,6 +64,7 @@ Presiona el botón para iniciar tu expedición.`;
   escribirMaquina(mensaje, "mensajeMaquina", 35, mostrarBotonContinuar);
 }
 
+// ✅ Efecto máquina de escribir con callback opcional
 function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
   let i = 0;
   const destino = document.getElementById(idElemento);
@@ -74,6 +79,7 @@ function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
   }, velocidad);
 }
 
+// ✅ Botón para continuar hacia el mapa
 function mostrarBotonContinuar() {
   const btn = document.createElement("button");
   btn.textContent = "🚀 Continuar misión";
@@ -83,4 +89,5 @@ function mostrarBotonContinuar() {
   destino.appendChild(document.createElement("br"));
   destino.appendChild(btn);
 }
+
 
