@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-  <!-- Firebase Analytics (opcional para métricas) -->
+  <!-- Firebase (si usas métricas) -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <script>
@@ -29,23 +29,25 @@
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+
+
   </script>
 </head>
 <body>
 
   <div class="estructura-juego">
-    
-    <!-- 🧭 Fila 1: Mapa interactivo + botones -->
+
+    <!-- 🧭 Fila 1: Mapa + controles + chambot intro -->
     <div class="zona-superior">
-      <div id="chatBotMision">
-        <div class="contenedor-chatbot">
-          <img src="chambot.png" class="imagen-robot" />
-          <div>
-            <h3>🤖 Chambot: Informe secreto</h3>
-            <p>Se ha detectado una transacción ilegal de patrimonio oculto. ¿Desea activar la misión y buscar el objeto perdido?</p>
-            <button onclick="aceptarMision()">✅ Aceptar</button>
-            <button onclick="rechazarMision()">❌ Rechazar</button>
-          </div>
+
+      <div id="chatBotMision" class="contenedor-chatbot">
+        <img src="chambot.png" class="imagen-robot" alt="Chambot" />
+        <div>
+          <h3>🤖 Chambot: Informe secreto</h3>
+          <p>Se ha detectado una transacción ilegal de patrimonio oculto. ¿Desea activar la misión y buscar el objeto perdido?</p>
+          <button onclick="aceptarMision()">✅ Aceptar</button>
+          <button onclick="rechazarMision()">❌ Rechazar</button>
         </div>
       </div>
 
@@ -60,19 +62,21 @@ const analytics = getAnalytics(app);
         <div id="resumenJugador">🧠 Misión en curso...</div>
         <div id="reporteNarrativo">📍 Ubicación</div>
       </div>
+
     </div>
 
-    <!-- 📜 Fila 2: Narrativa del Chambot -->
+    <!-- 📜 Fila 2: Narrativa e intervención -->
     <div class="zona-inferior">
       <div id="mensajePanel" class="contenedor-pistas">
-        🧩 Cargando pistas e intervenciones...
+        🧩 Esperando instrucciones del Chambot...
       </div>
     </div>
 
   </div>
 
-  <!-- Código JavaScript del mapa -->
+  <!-- Lógica completa del juego -->
   <script src="mapa.js"></script>
 </body>
 </html>
+
 
