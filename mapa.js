@@ -172,3 +172,11 @@ function obtenerRango(casos) {
   else return "🌟 Comandante General";
 }
 
+function aceptarMision() {
+  document.getElementById("chatBotMision").style.display = "none";
+  document.getElementById("panelBotones").style.display = "block";
+  document.getElementById("mensajePanel").textContent =
+    "🧠 Misión iniciada. Selecciona una ubicación y busca pistas relevantes.";
+}
+
+
