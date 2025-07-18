@@ -16,15 +16,23 @@
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <script>
-    const firebaseConfig = {
-  apiKey: "AIzaSyBbODoyyAkSw4AuIPZp9TMlZ-eVLbWkSeE",
-  authDomain: "inspectormag-a88bd.firebaseapp.com",
-  projectId: "inspectormag-a88bd",
-  storageBucket: "inspectormag-a88bd.firebasestorage.app",
-  messagingSenderId: "103921614758",
-  appId: "1:103921614758:web:557b62263304f1cfc29967",
-  measurementId: "G-YG0N4CMEET"
-};
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "...",
+    authDomain: "...",
+    projectId: "...",
+    appId: "...",
+    measurementId: "..."
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  logEvent(analytics, "ingreso_index");
+</script>
+
   </script>
 </head>
 <body>
