@@ -123,5 +123,22 @@ function rechazarMision() {
     "📁 Misión rechazada. Puedes regresar más tarde.";
 }
 
+function mostrarPistas() {
+  const panel = document.getElementById("mensajePanel");
+  panel.innerHTML = `
+    <div class="contenedor-pistas">
+      <h3>🧩 Pistas activas</h3>
+      <p>Departamento asignado: León</p>
+      <p>⚠️ Se ha reportado actividad inusual en tres zonas clave:</p>
+      <ul>
+        <li>📍 Parque Central</li>
+        <li>🛒 Mercado</li>
+        <li>🏛️ Iglesia principal</li>
+      </ul>
+      <p>👣 Rastree los puntos marcados para confirmar presencia del sospechoso.</p>
+    </div>`;
+}
+
+
 
 
