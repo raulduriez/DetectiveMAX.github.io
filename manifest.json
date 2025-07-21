@@ -1,11 +1,12 @@
 {
   "name": "Las Mil Piezas Perdidas",
-  "short_name": "Detective",
-  "description": "Juego investigativo donde el jugador rastrea pistas, criminales y cultura local.",
+  "short_name": "DetectiveMAX",
+  "description": "Juego narrativo detectivesco cultural con pistas, progresión y decisiones.",
   "start_url": "index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0066cc",
+  "theme_color": "#007acc",
   "orientation": "portrait",
   "icons": [
     {
@@ -18,6 +19,8 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "lang": "es",
+  "dir": "ltr"
 }
 
