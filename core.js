@@ -1,59 +1,55 @@
-// 🔧 Variables globales
-let map;
-let grupoMarcadores = L.layerGroup();
-let pistaActual = 1;
-let tiempoRestante = 4320; // minutos ficticios
-let progresoCaso = 0;
+let mapa;
+let grupoMarcadores;
 let casosResueltos = parseInt(localStorage.getItem("casosResueltos")) || 0;
+let tiempoRestante = parseInt(localStorage.getItem("tiempoRestante")) || 4320;
 
-// 🚦 Ejecutar al cargar la página
 window.onload = () => {
-  document.getElementById("chatBotMision").style.display = "block";
+  iniciarMapa();
+  mostrarResumen();
+  document.getElementById("mensajePanel").textContent = "🧠 Esperando instrucciones del Chambot...";
 };
 
-// 🗺️ Inicializa el mapa base
 function iniciarMapa() {
-  map = L.map("map").setView([12.8654, -85.2072], 7);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: "© OpenStreetMap"
-  }).addTo(map);
-  grupoMarcadores.addTo(map);
+  if (mapa) {
+  mapa.remove(); // 🔧 elimina instancia anterior
 }
 
-// 📊 Muestra resumen del progreso y tiempo
+  mapa = L.map("map").setView([12.8654, -85.2072], 7);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapa);
+  grupoMarcadores = L.layerGroup().addTo(mapa);
+}
+
 function mostrarResumen() {
   const horas = Math.floor(tiempoRestante / 60);
   const minutos = tiempoRestante % 60;
   document.getElementById("resumenJugador").textContent =
-    `🧠 Misión activa | Pista ${pistaActual}/3 | Tiempo: ${horas}h ${minutos}min`;
-  verificarTiempo();
+    `🧠 Pista ${parseInt(localStorage.getItem("pistaActual")) || 1}/3 | Tiempo restante: ${horas}h ${minutos}min`;
+  localStorage.setItem("tiempoRestante", tiempoRestante);
 }
 
-// ⏳ Verifica si el tiempo se agotó
-function verificarTiempo() {
-  if (tiempoRestante <= 0) {
-    alert("🕯️ El tiempo se agotó. El objeto se pierde en la historia.");
-    document.getElementById("mensajePanel").textContent =
-      "⏳ Has fallado. El expediente queda sin cerrar.";
-    grupoMarcadores.clearLayers();
-  }
+function obtenerRango(total) {
+  if (total >= 16) return "👑 Comandante General";
+  if (total >= 13) return "🧠 Comandante";
+  if (total >= 10) return "🎖️ Subcomandante";
+  if (total >= 7)  return "🕵️ Detective";
+  if (total >= 4)  return "🔍 Inspector";
+  return "📦 Novato";
 }
 
-// 🗺️ Coordenadas por departamento
-function coordenadasDepartamento(depto) {
-  const coords = {
-    "León": [12.436, -86.879],
-    "Masaya": [11.976, -86.090],
-    "Matagalpa": [13.002, -85.914]
-  };
-  return coords[depto] || [12.8654, -85.2072];
+function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
+  let i = 0;
+  const destino = document.getElementById(idElemento);
+  if (!destino) return;
+  destino.textContent = "";
+  const intervalo = setInterval(() => {
+    destino.textContent += texto.charAt(i);
+    i++;
+    if (i >= texto.length) {
+      clearInterval(intervalo);
+      if (callback) callback();
+    }
+  }, velocidad);
 }
 
-// 🔍 Verifica si viajó al lugar correcto según pista
-function esCorrecto(depto) {
-  return (pistaActual === 1 && depto === "León") ||
-         (pistaActual === 2 && depto === "Masaya") ||
-         (pistaActual === 3 && depto === "Matagalpa");
-}
+
 
