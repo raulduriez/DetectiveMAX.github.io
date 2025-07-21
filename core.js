@@ -53,3 +53,4 @@ function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
 
 
 
+
