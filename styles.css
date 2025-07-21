@@ -1,97 +1,131 @@
-/* 🌐 Estilos base */
+/* 🎨 Configuración base */
 body {
   margin: 0;
   padding: 0;
-  font-family: system-ui, 'Courier New', monospace;
-  font-size: 18px;
-  line-height: 1.6;
+  font-family: 'Courier New', Courier, monospace;
   background-color: #ffffff;
   color: #222;
 }
 
-/* 🧩 Contenedor principal vertical */
+/* 🧩 Contenedor general */
 .estructura-juego {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
   padding: 16px;
-  box-sizing: border-box;
+  max-width: 960px;
+  margin: auto;
 }
 
-/* 🧠 Fila superior: registro del jugador */
-.zona-superior {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 20px;
-}
-
-/* 📜 Fila inferior: narrativa del Chambot */
+/* 📍 Zonas superiores e inferiores */
+.zona-superior,
 .zona-inferior {
   width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-/* 🎮 Botones funcionales */
-button {
-  display: block;
+/* 🗺️ Mapa con borde */
+#map {
+  height: 320px;
   width: 100%;
+  border: 2px solid #007acc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* 📌 Pie de mapa con resumen y ubicación */
+.pie-mapa {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* 🤖 Panel del Chambot */
+.contenedor-chatbot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f0f8ff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 12px;
+  margin-bottom: 20px;
+}
+
+.imagen-robot {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+/* 🎮 Panel de pistas y decisiones */
+.contenedor-pistas {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 14px;
   margin-top: 10px;
-  font-size: 18px;
-  background-color: #0066cc;
+}
+
+/* 🧠 Mensaje tipo máquina de inteligencia */
+.texto-maquina {
+  font-style: italic;
+  background-color: #efefef;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* 🔘 Botones */
+button {
+  padding: 10px 18px;
+  margin: 6px 4px;
+  font-size: 1em;
+  background-color: #007acc;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 button:hover {
-  background-color: #004c99;
+  background-color: #005a99;
 }
 
-/* 📝 Campo de alias */
+/* 🎮 Botón principal */
+.boton-jugar {
+  background-color: #28a745;
+  font-size: 1.1em;
+  margin-top: 14px;
+}
+
+.boton-jugar:hover {
+  background-color: #1f7c34;
+}
+
+/* 📋 Input de alias */
 input[type="text"] {
-  width: 100%;
   padding: 10px;
-  font-size: 17px;
-  margin-top: 8px;
-  border: 1px solid #ccc;
+  width: 80%;
+  max-width: 300px;
+  margin: 8px 0;
+  border: 1px solid #aaa;
   border-radius: 6px;
+  font-size: 1em;
 }
 
-/* 🧠 Panel narrativo del Chambot */
-.texto-maquina {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px;
-  margin-top: 12px;
-  font-size: 17px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-/* 📊 Lista de rangos del juego */
+/* 📈 Lista de rangos */
 .lista-rangos {
-  margin-top: 10px;
-  padding-left: 20px;
-  font-size: 16px;
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95em;
+  margin-bottom: 12px;
 }
 
-/* 📱 Responsividad para pantallas grandes */
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
-  .zona-superior,
-  .zona-inferior {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+.lista-rangos li {
+  margin: 4px 0;
 }
 
 
