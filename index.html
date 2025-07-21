@@ -5,14 +5,17 @@
   <title>Las Mil Piezas Perdidas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- PWA Manifesto e Icono -->
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon.png" />
+  <!-- 🎨 Estilos -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Firebase (solo si lo usas) -->
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
-  <script>
+  <!-- 📲 Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- 🔒 Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+
     const firebaseConfig = {
   apiKey: "AIzaSyBbODoyyAkSw4AuIPZp9TMlZ-eVLbWkSeE",
   authDomain: "inspectormag-a88bd.firebaseapp.com",
@@ -23,12 +26,12 @@
   measurementId: "G-YG0N4CMEET"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    logEvent(analytics, "ingreso_index");
   </script>
 
-  <!-- Service Worker (para instalar como app) -->
+  <!-- 🛠️ Service Worker para PWA -->
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("service-worker.js")
@@ -36,17 +39,13 @@ const analytics = getAnalytics(app);
         .catch(err => console.error("❌ Error con Service Worker:", err));
     }
   </script>
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <div class="estructura-juego">
-
-    <!-- 🧩 Fila 1: Registro del detective -->
+    <!-- 🕵️ Registro del detective -->
     <div class="zona-superior">
-      <h2>🕵️ Registro del detective</h2>
+      <h2>🔐 Registro del detective</h2>
 
       <label for="alias">Alias o nombre:</label>
       <input type="text" id="alias" placeholder="Ej. Duriez" />
@@ -56,31 +55,73 @@ const analytics = getAnalytics(app);
       <h3>🎖️ Tu rango actual:</h3>
       <div id="rangoJugador">🧩 Cargando rango...</div>
 
-      <h3>📈 Rangos del juego:</h3>
+      <h3>📈 Rangos disponibles:</h3>
       <ul class="lista-rangos">
-        <li>Novato: 1–3 casos</li>
-        <li>Inspector: 4–6 casos</li>
-        <li>Detective: 7–9 casos</li>
-        <li>Subcomandante: 10–12 casos</li>
-        <li>Comandante: 13–15 casos</li>
-        <li>Comandante General: 16+ casos</li>
+        <li>📦 Novato: 1–3 casos</li>
+        <li>🔍 Inspector: 4–6 casos</li>
+        <li>🕵️ Detective: 7–9 casos</li>
+        <li>🎖️ Subcomandante: 10–12 casos</li>
+        <li>🧠 Comandante: 13–15 casos</li>
+        <li>👑 Comandante General: 16+ casos</li>
       </ul>
 
       <button onclick="iniciarJuego()" class="boton-jugar">🎮 JUGAR</button>
+      <button onclick="reiniciarJuego()">🧠 Reiniciar progresión</button>
+
     </div>
 
-    <!-- 📜 Fila 2: Narrativa del Chambot -->
+    <!-- 📜 Panel narrativo -->
     <div class="zona-inferior">
       <h2>🧠 Centro de Inteligencia</h2>
       <div id="mensajeMaquina" class="texto-maquina">
         🧩 Esperando validación de identidad...
       </div>
     </div>
-
   </div>
 
-  <!-- Script de narrativa y lógica detectivesca -->
-  <script src="intro.js"></script>
+  <!-- 🧠 Registro e inicio -->
+  <script>
+    function guardarRegistro() {
+      const alias = document.getElementById("alias").value.trim();
+      if (alias !== "") {
+        localStorage.setItem("aliasDetective", alias);
+        localStorage.setItem("pistaActual", 1);
+        document.getElementById("mensajeMaquina").textContent =
+          `✅ Bienvenido, ${alias}.`;
+        const casos = parseInt(localStorage.getItem("casosResueltos")) || 0;
+        document.getElementById("rangoJugador").textContent = obtenerRango(casos);
+      } else {
+        alert("🔒 Ingresa tu alias antes de continuar.");
+      }
+    }
+
+    function iniciarJuego() {
+      window.location.href = "mapa.html";
+    }
+
+    function obtenerRango(total) {
+      if (total >= 16) return "👑 Comandante General";
+      if (total >= 13) return "🧠 Comandante";
+      if (total >= 10) return "🎖️ Subcomandante";
+      if (total >= 7)  return "🕵️ Detective";
+      if (total >= 4)  return "🔍 Inspector";
+      return "📦 Novato";
+    }
+
+    
+
+    window.onload = () => {
+      const casos = parseInt(localStorage.getItem("casosResueltos")) || 0;
+      document.getElementById("rangoJugador").textContent = obtenerRango(casos);
+    };
+  </script>
+
+  <script src="core.js"></script> <!-- debe incluir escribirMaquina -->
+<script src="narrativa.js"></script>
+<script src="viaje.js"></script>
+<script src="intervencion.js"></script>
+<script src="panel.js"></script>
+
 </body>
 </html>
 
