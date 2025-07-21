@@ -1,25 +1,89 @@
+function escribirMaquina(texto, idElemento, velocidad = 35, callback = null) {
+  let i = 0;
+  const destino = document.getElementById(idElemento);
+  if (!destino) return;
+  destino.textContent = "";
+  const intervalo = setInterval(() => {
+    destino.textContent += texto.charAt(i);
+    i++;
+    if (i >= texto.length) {
+      clearInterval(intervalo);
+      if (callback) callback();
+    }
+  }, velocidad);
+}
 
-// 📌 Intervención narrativa en el lugar investigado
 function intervenirLugar(lugar, esClave) {
   const panel = document.getElementById("mensajePanel");
   panel.innerHTML = "";
+
+  const pistaActual = parseInt(localStorage.getItem("pistaActual")) || 1;
 
   if (!esClave) {
     panel.innerHTML = `
       <div class="contenedor-pistas">
         <h3>🕵️ Sin pistas relevantes</h3>
-        <p>${lugar} no muestra indicios claves. Chambot recomienda seguir investigando.</p>
+        <p>${lugar} no muestra indicios claves.</p>
       </div>`;
     return;
   }
 
-  escribirMaquina(`
-🏃 Se inicia la persecución...
+  if (pistaActual < 3) {
+    mostrarSugerenciaDeViaje(pistaActual);
+  } else {
+    escribirMaquina(
+      `🏃 Se inicia la persecución...
 🛰️ Ruidos detectados cerca del río...
-🎯 ¿Negra Yan o Viuda Negra?`, "mensajePanel", 35, mostrarDecisionFinal);
+🎯 ¿Negra Yan o Viuda Negra?`,
+      "mensajePanel",
+      35,
+      mostrarDecisionFinal
+    );
+  }
 }
 
-// ⚖️ Presenta al jugador la decisión final
+function mostrarSugerenciaDeViaje(pistaActual) {
+  const panel = document.getElementById("mensajePanel");
+  const narrativa = narrativaJuego.find(n => n.pista === pistaActual);
+  const opciones = ["León", "Masaya", "Matagalpa"];
+
+  panel.innerHTML = `
+    <div class="contenedor-pistas">
+      <h3>🧭 ¿A dónde deseas viajar ahora?</h3>
+      <p>Elige según las pistas y decide tu próximo destino.</p>
+      ${opciones.map(d => `
+        <button onclick="decidirDestino('${d}', '${narrativa.destinoCorrecto}')">
+          🚀 Viajar a ${d}
+        </button>`).join("")}
+    </div>`;
+}
+
+function decidirDestino(elegido, destinoCorrecto) {
+  let pistaActual = parseInt(localStorage.getItem("pistaActual")) || 1;
+  let tiempoRestante = parseInt(localStorage.getItem("tiempoRestante")) || 4320;
+  const panel = document.getElementById("mensajePanel");
+
+  if (elegido === destinoCorrecto) {
+    panel.innerHTML = `
+      <div class="contenedor-pistas">
+        <h3>✅ Decisión correcta</h3>
+        <pNo pierdes tiempo. Continúas tu investigación.</p>
+      </div>`;
+  } else {
+    tiempoRestante -= 30;
+    localStorage.setItem("tiempoRestante", tiempoRestante);
+    panel.innerHTML = `
+      <div class="contenedor-pistas">
+        <h3>⛔ Desvío narrativo</h3>
+        <p>Decisión incorrecta. Pierdes 30 minutos.</p>
+      </div>`;
+  }
+
+  pistaActual++;
+  localStorage.setItem("pistaActual", pistaActual);
+  setTimeout(mostrarResumen, 1000);
+}
+
 function mostrarDecisionFinal() {
   const panel = document.getElementById("mensajePanel");
   panel.innerHTML += `
@@ -30,28 +94,25 @@ function mostrarDecisionFinal() {
     </div>`;
 }
 
-// ✅ Resuelve el caso, ajusta progreso y tiempo
 function resolverCaso(nombre) {
+  const pistaActual = parseInt(localStorage.getItem("pistaActual")) || 3;
+  const narrativa = narrativaJuego.find(n => n.pista === pistaActual);
   const panel = document.getElementById("mensajePanel");
-  panel.innerHTML = "";
 
-  let mensaje = "";
-  if (
-    (pistaActual === 1 && nombre === "Viuda Negra") ||
-    (pistaActual === 2 && nombre === "Negra Yan") ||
-    (pistaActual === 3 && nombre === "Viuda Negra")
-  ) {
-    mensaje = `🎉 Sospechosa capturada.\n🔐 Caso resuelto con éxito.\n🎖️ ¡Bien hecho, detective!`;
-    progresoCaso++;
-    pistaActual++;
+  const acierto = narrativa?.culpableCorrecta === nombre;
+  let mensaje = acierto
+    ? "🎉 Sospechosa capturada. Caso cerrado con éxito."
+    : "❌ Sospechosa equivocada. El caso se complica.";
+
+  if (acierto) {
+    let casosResueltos = parseInt(localStorage.getItem("casosResueltos")) || 0;
     casosResueltos++;
     localStorage.setItem("casosResueltos", casosResueltos);
-    mostrarResumen();
   } else {
-    mensaje = `❌ Sospechosa equivocada.\n⚠️ El verdadero criminal ha escapado.\n🧠 La misión sigue abierta.`;
+    let tiempoRestante = parseInt(localStorage.getItem("tiempoRestante")) || 4320;
     tiempoRestante -= 90;
-    mostrarResumen();
+    localStorage.setItem("tiempoRestante", tiempoRestante);
   }
 
-  escribirMaquina(mensaje, "mensajePanel", 35);
+  escribirMaquina(mensaje, "mensajePanel", 35, mostrarResumen);
 }
